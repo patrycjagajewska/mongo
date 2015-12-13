@@ -8,12 +8,12 @@ client = MongoClient()
 
 db = client.Wrona
 
-business = db.business
-
 #lekarze ktorzy maja czynne w sobote lub w niedziele w miescie Phoenix ocenieni wyzej niz 4 (z liczba gwiazdek wieksza niz 4)
 print("1 QUERY")
 
-query1 = db.business.find({'categories': {'$in': ['Doctors']}, '$or': [{'hours.Saturday': {'$exists': 'true'}}, {'hours.Sunday': {'$exists':'true'}}], 'stars': {'$gt': 4}, 'city': 'Phoenix'}, {'name': 1, 'full_address': 1, 'hours': 1})
+query1 = db.business.find({'categories': {'$in': ['Doctors']},
+                           '$or': [{'hours.Saturday': {'$exists': 'true'}}, {'hours.Sunday': {'$exists':'true'}}],
+                           'stars': {'$gt': 4}, 'city': 'Phoenix'}, {'name': 1, 'full_address': 1, 'hours': 1})
 
 print("Health business in Phoenix open on weekends with more than 4 stars grade:\n")
 for item in query1:
@@ -36,6 +36,7 @@ for item in query2:
     print(str(item['_id']) + '\n' + '    ' + str(item['smallest_city']) + ' - ' + str(item['smallest_reviews_count']) + '\n' + '    ' + str(item['biggest_city']) + ' - ' + str(item['biggest_reviews_count']))
     print('\n')
 
+#liczba znajomych dla kazdego z imion w bazie
 print("3 QUERY")
 
 mapF = Code(
