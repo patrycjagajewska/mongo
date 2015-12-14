@@ -6,7 +6,7 @@ __author__ = 'Patrycja'
 
 client = MongoClient()
 
-db = client.Wrona
+db = client.ydc
 
 #lekarze ktorzy maja czynne w sobote lub w niedziele w miescie Phoenix ocenieni wyzej niz 4 (z liczba gwiazdek wieksza niz 4)
 print("1 QUERY")
@@ -33,11 +33,14 @@ print("Cities grouped by state with biggest and smallest amount of reviews: ")
 query2 = db.business.aggregate(pipeline)
 
 for item in query2:
-    print(str(item['_id']) + '\n' + '    ' + str(item['smallest_city']) + ' - ' + str(item['smallest_reviews_count']) + '\n' + '    ' + str(item['biggest_city']) + ' - ' + str(item['biggest_reviews_count']))
+    print(str(item['_id']) + '\n' + '    '
+          + str(item['smallest_city']) + ' - ' + str(item['smallest_reviews_count']) + '\n'
+          + '    ' + str(item['biggest_city']) + ' - ' + str(item['biggest_reviews_count']))
     print('\n')
 
 #liczba znajomych dla kazdego z imion w bazie
-print("3 QUERY")
+print("3 QUERY\n")
+print("Please wait until map reduce function is done..\n")
 
 mapF = Code(
     'function() {'
