@@ -1,3 +1,4 @@
-start cmd /k "C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe"
-py main.py
+set /p UserInputPath= Please specify path to your mongod.exe file
+start cmd /k py main.py
+"%UserInputPath%"
 pause
